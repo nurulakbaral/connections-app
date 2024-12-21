@@ -3,7 +3,7 @@ import cx from 'clsx'
 
 interface TFallbackUserListProps {
   isLoading: boolean
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export function FallbackUserList({ isLoading, children }: TFallbackUserListProps) {
