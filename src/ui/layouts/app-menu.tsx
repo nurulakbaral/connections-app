@@ -41,7 +41,10 @@ export function AppMenuDrawerDesktop({ className, ...props }: TAppMenuDrawerDesk
 
         <button
           onClick={() => setIsHide((collpased) => !collpased)}
-          className='flex justify-center items-center py-2 px-3 rounded-md gap-4 mb-4 hover:bg-gray-100'
+          className={cx(
+            'flex items-center py-2 px-3 rounded-md gap-4 mb-4 hover:bg-gray-100',
+            isHide && 'justify-center',
+          )}
         >
           <Show when={!isHide}>
             <ChevronLeftIcon className='size-6 text-black' />
@@ -113,7 +116,11 @@ interface TAppMenuNavigationProps extends TBoxProps {
 export function AppMenuNavigation({ className, onOpen, ...props }: TAppMenuNavigationProps) {
   return (
     <Box
-      className={cx(className, 'px-3 py-3 bg-gray-100 md:bg-white', 'flex justify-between items-center gap-7')}
+      className={cx(
+        className,
+        'px-3 py-3 md:px-12 md:py-8 bg-gray-100 md:bg-white',
+        'flex justify-between items-center gap-7',
+      )}
       {...props}
     >
       <button className='md:hidden' onClick={onOpen} type='button'>

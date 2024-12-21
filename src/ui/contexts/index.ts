@@ -1,1 +1,1 @@
-export * from './ProviderClient'
+export * from './provider-client'
