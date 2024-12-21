@@ -77,7 +77,7 @@ export function AppMenuDrawerMobile({ className, onClose, ...props }: TAppMenuDr
       <Box onClick={onClose} className='fixed inset-0 bg-black bg-opacity-50 z-40' aria-hidden='true' />
 
       <Box className={cx(className, 'fixed top-0 left-0 z-50 w-64 h-full bg-white shadow-lg p-3')} {...props}>
-        <button type='button'>
+        <button onClick={onClose} type='button'>
           <Bars3Icon className='size-10 text-black' />
         </button>
 
