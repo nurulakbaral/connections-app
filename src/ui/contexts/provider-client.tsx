@@ -7,7 +7,12 @@ import * as React from 'react'
  * ========================================
  */
 
-interface TProviderClientContext {}
+interface TProviderClientContext {
+  featureSearch: {
+    value: string
+    setValue: React.Dispatch<React.SetStateAction<string>>
+  }
+}
 
 export const ProviderClientContext = React.createContext<null | TProviderClientContext>(null)
 
@@ -22,5 +27,18 @@ interface TProviderClientProps {
 }
 
 export function ProviderClient({ children }: TProviderClientProps) {
-  return <ProviderClientContext.Provider value={null}>{children}</ProviderClientContext.Provider>
+  const [featureSearch, setFeatureSearch] = React.useState<string>('')
+
+  return (
+    <ProviderClientContext.Provider
+      value={{
+        featureSearch: {
+          value: featureSearch,
+          setValue: setFeatureSearch,
+        },
+      }}
+    >
+      {children}
+    </ProviderClientContext.Provider>
+  )
 }

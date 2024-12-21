@@ -6,6 +6,7 @@ import { CardUser } from './card-user'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { FallbackUserList } from '~/src/features'
 import { Box } from '~/src/ui/components'
+import { useFeatureSearch } from '~/src/ui/hooks'
 
 /**
  * =======================================
@@ -16,6 +17,7 @@ import { Box } from '~/src/ui/components'
 interface TCardUserListProps extends React.HTMLAttributes<HTMLElement> {}
 
 export function CardUserList({ className, ...props }: TCardUserListProps) {
+  const { value } = useFeatureSearch()
   const {
     data: userListData,
     isLoading,
@@ -39,6 +41,7 @@ export function CardUserList({ className, ...props }: TCardUserListProps) {
     },
     select: (data) => {
       const userList = data.pages.flat()
+
       return {
         pages: userList,
         totalData: userList?.[0]?.total || 0,
@@ -47,7 +50,12 @@ export function CardUserList({ className, ...props }: TCardUserListProps) {
     },
   })
 
-  const userList = userListData?.pages
+  const userList = userListData?.pages.filter(
+    (user) =>
+      user?.first_name?.includes(value || '') ||
+      user?.last_name?.includes(value || '') ||
+      user?.email?.includes(value || ''),
+  )
   const totalData = userListData?.totalData
 
   React.useEffect(() => {

@@ -1,9 +1,10 @@
 'use client'
 import * as React from 'react'
-import { TBoxProps, Box } from '~/src/ui/components'
 import { Bars3Icon, UserIcon, ShieldCheckIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import cx from 'clsx'
-import { Show } from '../components/show'
+import { TBoxProps, Box } from '~/src/ui/components'
+import { Show } from '~/src/ui/components/show'
+import { useFeatureSearch } from '~/src/ui/hooks/use-feature-search'
 
 /**
  * =======================================
@@ -122,6 +123,8 @@ interface TAppMenuNavigationProps extends TBoxProps {
 }
 
 export function AppMenuNavigation({ className, onOpen, ...props }: TAppMenuNavigationProps) {
+  const { onChange } = useFeatureSearch()
+
   return (
     <Box
       className={cx(
@@ -136,6 +139,7 @@ export function AppMenuNavigation({ className, onOpen, ...props }: TAppMenuNavig
       </button>
 
       <input
+        onChange={onChange}
         className={cx('py-2 px-3 border-2 rounded-md border-gray-200', 'w-full max-w-xs')}
         type='search'
         placeholder='Search here'
@@ -161,7 +165,8 @@ export function AppMenu({ className, children, ...props }: TAppMenuProps) {
     <nav className={cx(className, 'md:flex md:flex-row-reverse md:items-start md:flex-1')} {...props}>
       <Box className='md:flex-1'>
         <AppMenuNavigation onOpen={() => setIsOpen(true)} />
-        {children}
+
+        <React.Fragment>{children}</React.Fragment>
       </Box>
 
       <Show when={isOpen}>
