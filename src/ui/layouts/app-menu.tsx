@@ -17,7 +17,15 @@ export function AppMenuDrawerDesktop({ className, ...props }: TAppMenuDrawerDesk
   const [isHide, setIsHide] = React.useState(false)
 
   return (
-    <Box className={cx(className, 'h-full bg-white shadow-lg p-3', isHide && 'w-auto', !isHide && 'w-64')} {...props}>
+    <Box
+      className={cx(
+        className,
+        'hidden md:block md:bg-gray-200 h-full shadow-lg p-3 sticky top-0 bottom-0 max-h-screen',
+        isHide && 'w-auto',
+        !isHide && 'w-64',
+      )}
+      {...props}
+    >
       <nav className='flex flex-col justify-between h-full'>
         <ul className='space-y-2'>
           <li className='flex gap-3 items-center'>
@@ -160,7 +168,7 @@ export function AppMenu({ className, children, ...props }: TAppMenuProps) {
         <AppMenuDrawerMobile onClose={() => setIsOpen(false)} />
       </Show>
 
-      <AppMenuDrawerDesktop className='hidden md:block md:bg-gray-200' />
+      <AppMenuDrawerDesktop />
     </nav>
   )
 }
