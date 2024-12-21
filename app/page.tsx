@@ -1,3 +1,9 @@
+import { AppMenu } from '~/src/ui/layouts'
+
 export default function Home() {
-  return <main></main>
+  return (
+    <main>
+      <AppMenu />
+    </main>
+  )
 }

@@ -1,6 +1,7 @@
+import '~/src/assets/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
+import { ProviderClient } from '~/src/ui/contexts'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,9 @@ interface TRootLayoutProps {
 export default function RootLayout({ children }: Readonly<TRootLayoutProps>) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ProviderClient>{children}</ProviderClient>
+      </body>
     </html>
   )
 }
