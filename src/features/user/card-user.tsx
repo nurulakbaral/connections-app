@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Box } from '~/src/ui/components'
 import cx from 'clsx'
 import { TResponseUserList } from '~/src/services/user/user.model'
+import { DialogEdit } from '~/src/features/dialog/dialog-edit'
 
 /**
  * =======================================
@@ -31,7 +32,7 @@ export function CardUser({ className, userDetail, ...props }: TCardUserProps) {
         <p className='text-center'>{userDetail.email}</p>
       </Box>
 
-      <button className='bg-gray-300 hover:bg-gray-200 rounded-md py-2 w-full'>Edit</button>
+      <DialogEdit userDetail={userDetail} />
     </section>
   )
 }
