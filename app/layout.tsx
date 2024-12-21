@@ -1,7 +1,7 @@
 import '~/src/assets/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ProviderClient } from '~/src/ui/contexts'
+import { ProviderQueryClient, ProviderClient } from '~/src/ui/contexts'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,7 +18,9 @@ export default function RootLayout({ children }: Readonly<TRootLayoutProps>) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <ProviderClient>{children}</ProviderClient>
+        <ProviderQueryClient>
+          <ProviderClient>{children}</ProviderClient>
+        </ProviderQueryClient>
       </body>
     </html>
   )

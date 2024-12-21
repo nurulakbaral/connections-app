@@ -1,11 +1,11 @@
 import { Box } from '~/src/ui/components'
 import { AppMain, AppMenu } from '~/src/ui/layouts'
-import { CardPostList } from '~/src/features/post/card-post-list'
+import { CardUserList } from '~/src/features/user/card-user-list'
 
 export function AppContent() {
   return (
     <Box className='p-12'>
-      <CardPostList />
+      <CardUserList />
     </Box>
   )
 }
