@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
+    "dev:app": "dotenvx run -f ./ci/development/.env.development -- next dev",
+    "build:app": "next build",
+    "start:app": "dotenvx run -f ./ci/development/.env.development -- next start",
+    "lint:app": "next lint",
     "prepare": "husky"
   },
   "dependencies": {
+    "@dotenvx/dotenvx": "^1.31.3",
+    "@tanstack/react-query": "^5.62.8",
+    "axios": "^1.7.9",
+    "motion": "^11.15.0",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18"
