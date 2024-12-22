@@ -1,5 +1,7 @@
 'use client'
 import * as React from 'react'
+import * as motion from 'motion/react-client'
+import { AnimatePresence } from 'motion/react'
 import { Bars3Icon, UserIcon, ShieldCheckIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import cx from 'clsx'
 import { TBoxProps, Box } from '~/src/ui/components'
@@ -18,14 +20,16 @@ export function AppMenuDrawerDesktop({ className, ...props }: TAppMenuDrawerDesk
   const [isHide, setIsHide] = React.useState(false)
 
   return (
-    <Box
+    <motion.div
+      key='drawer-desktop'
+      initial={{ width: '256px' }}
+      // Note: Don't use `auto` value for width.
+      animate={{ width: isHide ? '84px' : '256px' }}
       className={cx(
         className,
         'hidden md:block md:bg-gray-200 h-full shadow-lg p-3 sticky top-0 bottom-0 max-h-screen',
-        isHide && 'w-auto',
-        !isHide && 'w-64',
+        'overflow-hidden',
       )}
-      {...props}
     >
       <nav className='flex flex-col justify-between h-full'>
         <ul className='space-y-2'>
@@ -66,7 +70,7 @@ export function AppMenuDrawerDesktop({ className, ...props }: TAppMenuDrawerDesk
           <Show when={!isHide}>Hide</Show>
         </button>
       </nav>
-    </Box>
+    </motion.div>
   )
 }
 
@@ -85,7 +89,14 @@ export function AppMenuDrawerMobile({ className, onClose, ...props }: TAppMenuDr
     <React.Fragment>
       <Box onClick={onClose} className='fixed inset-0 bg-black bg-opacity-50 z-40' aria-hidden='true' />
 
-      <Box className={cx(className, 'fixed top-0 left-0 z-50 w-64 h-full bg-white shadow-lg p-3')} {...props}>
+      <motion.div
+        key='drawer-mobile'
+        initial={{ x: '-100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '-100%' }}
+        transition={{ type: 'keyframes' }}
+        className={cx(className, 'fixed top-0 left-0 z-50 w-64 h-full bg-white shadow-lg p-3')}
+      >
         <button onClick={onClose} type='button'>
           <Bars3Icon className='size-10 text-black' />
         </button>
@@ -107,7 +118,7 @@ export function AppMenuDrawerMobile({ className, onClose, ...props }: TAppMenuDr
             </li>
           </ul>
         </nav>
-      </Box>
+      </motion.div>
     </React.Fragment>
   )
 }
@@ -169,9 +180,9 @@ export function AppMenu({ className, children, ...props }: TAppMenuProps) {
         <React.Fragment>{children}</React.Fragment>
       </Box>
 
-      <Show when={isOpen}>
-        <AppMenuDrawerMobile onClose={() => setIsOpen(false)} />
-      </Show>
+      <AnimatePresence initial={false}>
+        {isOpen && <AppMenuDrawerMobile key='drawer-mobile' onClose={() => setIsOpen(false)} />}
+      </AnimatePresence>
 
       <AppMenuDrawerDesktop />
     </nav>
