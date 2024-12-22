@@ -20,7 +20,7 @@ export function CardUser({ className, userDetail, ...props }: TCardUserProps) {
       className={cx(
         className,
         'gap-4',
-        'px-4 py-4 rounded-md bg-gray-100 min-h-72 w-full min-w-44 max-w-56 mx-auto',
+        'px-4 py-4 rounded-md bg-gray-50 min-h-72 w-full min-w-44 max-w-56 mx-auto',
         'flex flex-col justify-center items-center',
       )}
       {...props}

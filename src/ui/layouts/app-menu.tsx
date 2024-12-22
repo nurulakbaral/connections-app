@@ -27,7 +27,7 @@ export function AppMenuDrawerDesktop({ className, ...props }: TAppMenuDrawerDesk
       animate={{ width: isHide ? '84px' : '256px' }}
       className={cx(
         className,
-        'hidden md:block md:bg-gray-200 h-full shadow-lg p-3 sticky top-0 bottom-0 max-h-screen',
+        'hidden md:block md:bg-gray-50 h-full shadow-lg p-3 sticky top-0 bottom-0 max-h-screen',
         'overflow-hidden',
       )}
     >
@@ -140,7 +140,7 @@ export function AppMenuNavigation({ className, onOpen, ...props }: TAppMenuNavig
     <Box
       className={cx(
         className,
-        'px-3 py-3 md:px-12 md:py-8 bg-gray-100 md:bg-white',
+        'px-3 py-3 md:px-12 md:py-8 bg-gray-50 md:bg-white',
         'flex justify-between items-center gap-7',
       )}
       {...props}

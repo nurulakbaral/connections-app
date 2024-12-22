@@ -168,10 +168,10 @@ export function DialogEdit({ className, userDetail, ...props }: TDialogEditProps
                   type='button'
                   disabled={isPending}
                   className={cx(
-                    'rounded-md py-2 w-full font-medium',
+                    'rounded-md py-2 w-full font-medium text-white',
                     isPending && 'bg-gray-100',
-                    !isPending && 'hover:bg-gray-200',
-                    !isPending && 'bg-gray-300',
+                    !isPending && 'hover:bg-blue-400',
+                    !isPending && 'bg-blue-600',
                   )}
                   onClick={handleClosing}
                 >
@@ -185,7 +185,7 @@ export function DialogEdit({ className, userDetail, ...props }: TDialogEditProps
 
       <button
         onClick={() => setOpen(true)}
-        className='bg-gray-300 hover:bg-gray-200 rounded-md py-2 w-full font-medium'
+        className='bg-blue-600 hover:bg-blue-400 text-white rounded-md py-2 w-full font-medium'
       >
         Edit
       </button>

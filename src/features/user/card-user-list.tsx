@@ -94,7 +94,7 @@ export function CardUserList({ className, ...props }: TCardUserListProps) {
     <section>
       <Box>
         <h1 className='text-xl mb-10'>
-          User List {userList?.length} of {totalData}
+          Connections {userList?.length} of {totalData}
         </h1>
       </Box>
 
