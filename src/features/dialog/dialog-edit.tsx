@@ -74,7 +74,7 @@ export function DialogEdit({ className, userDetail, ...props }: TDialogEditProps
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ type: 'keyframes' }}
-            className={cx('fixed inset-y-0 z-50 px-10 py-6 rounded-md bg-white min-w-[600px]')}
+            className={cx('fixed inset-x-2 inset-y-0 z-50 px-10 py-6 rounded-md bg-white md:min-w-[600px]')}
             open={open}
           >
             <form onSubmit={handleSubmit} className='flex flex-col justify-between h-full gap-32' method='dialog'>
